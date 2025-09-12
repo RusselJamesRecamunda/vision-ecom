@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Box, Image } from "@mantine/core";
 import "./style.css";
 
 function App() {
@@ -60,22 +61,45 @@ function App() {
         </div>
       </nav>
 
-    <section id="home" className="hero-section">
-  <div className="hero-background">
-    <img
-      src="/images/Hero/vision1.png"
-      alt="E-commerce Business"
-      className="hero-image"
-    />
-  </div>
-  <div className="hero-overlay"></div>
-  <div className="hero-content">
-    <h1 className="hero-title">Welcome to Vision E-commerce</h1>
-    <p className="hero-subtitle">Revolutionizing the way businesses grow online</p>
-  </div>
-</section>
+        <Box
+          component="section"
+          id="home"
+          pos="relative"
+          h="80vh"
+          mih={500}
+          display="flex"
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            overflow: "hidden",
+          }}
+        >
+          {/* Background Image */}
+          <Image
+            src="/images/Hero/vision1.png"
+            alt="E-commerce Business"
+            pos="absolute"
+            inset={0}
+            w="100%"
+            h="100%"
+            fit="cover"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+              zIndex: 0,
+            }}
+          />
 
-
+        {/* Overlay */}
+        <Box
+          pos="absolute"
+          inset={0}
+          style={{ zIndex: 1 }}
+          />
+        </Box>
     </div>
   );
 }
