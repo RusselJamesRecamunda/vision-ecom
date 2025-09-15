@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import BusinessIntro from "../components/BusinessIntro";
 import Philosophy from "../components/Philosophy";
+import AboutUs from "../components/AboutUs";
 import { useEffect } from "react";
 
 function Home() {
@@ -27,10 +28,11 @@ function Home() {
 
   return (
     <div>
-      <Navbar />
-      <Hero />
-      <BusinessIntro />
-      <Philosophy />
+        <Navbar />
+        <Hero />
+        <BusinessIntro />
+        <Philosophy />
+        <AboutUs />
     </div>
   );
 }
