@@ -4,6 +4,7 @@ import BusinessIntro from "../components/BusinessIntro";
 import Philosophy from "../components/Philosophy";
 import AboutUs from "../components/AboutUs";
 import Events from "../components/Events";
+import JobsSection from "../components/JobsSection";  
 import { useEffect } from "react";
 
 function Home() {
@@ -35,6 +36,7 @@ function Home() {
         <Philosophy />
         <AboutUs />
         <Events />
+        <JobsSection />
     </div>
   );
 }
