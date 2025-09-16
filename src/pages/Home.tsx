@@ -5,6 +5,8 @@ import Philosophy from "../components/Philosophy";
 import AboutUs from "../components/AboutUs";
 import Events from "../components/Events";
 import JobsSection from "../components/JobsSection";  
+import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 import { useEffect } from "react";
 
 function Home() {
@@ -30,13 +32,20 @@ function Home() {
 
   return (
     <div>
-        <Navbar />
-        <Hero />
-        <BusinessIntro />
-        <Philosophy />
-        <AboutUs />
-        <Events />
-        <JobsSection />
+      <Navbar />
+      <Hero />
+      <BusinessIntro />
+      <Philosophy />
+      <AboutUs />
+      <Events />
+      <JobsSection />
+      <Contact />
+      <Footer />
+
+      {/* Back to Top Button */}
+      <button id="backToTop" className="back-to-top">
+        <i className="fas fa-arrow-up"></i>
+      </button>
     </div>
   );
 }

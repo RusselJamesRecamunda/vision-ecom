@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   IconHeart,
   IconCurrencyPeso,
@@ -10,9 +10,13 @@ import {
 import "../style.css";
 import Job1 from "../assets/images/Jobs/ma.png";
 import Job2 from "../assets/images/Jobs/ojt.png";
-import { Image } from "@mantine/core";
+import { Image, Modal } from "@mantine/core";
+import ApplyForm from "./ApplyForm"; // import form
+import '@mantine/core/styles.css';
 
 const JobSection: React.FC = () => {
+  const [opened, setOpened] = useState(false);
+
   return (
     <section id="jobs" className="jobs-section">
       <div className="container">
@@ -26,11 +30,11 @@ const JobSection: React.FC = () => {
           {/* Job 1 */}
           <div className="job-card">
             <div className="job-image">
-               <Image
-                    src={Job1}
-                    alt="Marketing Assistant"
-                    className="job-img"
-                />
+              <Image
+                src={Job1}
+                alt="Marketing Assistant"
+                className="job-img"
+              />
             </div>
             <div className="job-content">
               <h3 className="job-title">Marketing Assistant</h3>
@@ -40,12 +44,12 @@ const JobSection: React.FC = () => {
                 (Facebook pages, Webcake landing pages), and help test their effectiveness. 
                 Ideal candidates are curious, detail-oriented, and have a strong eye for design and customer appeal.
               </p>
-                <ul className="job-requirements">
-                    <li>Bachelor’s Degree in Information Technology, or other related courses</li>
-                    <li>Fresh graduates are welcome to apply</li>
-                    <li>Preferably knows how to use CapCut and Canva</li>
-                    <li>Willing to work in Sampaloc, Manila</li>
-                </ul>
+              <ul className="job-requirements">
+                <li>Bachelor’s Degree in Information Technology, or other related courses</li>
+                <li>Fresh graduates are welcome to apply</li>
+                <li>Preferably knows how to use CapCut and Canva</li>
+                <li>Willing to work in Sampaloc, Manila</li>
+              </ul>
               <button
                 className="job-apply-button btn-secondary"
                 onClick={() =>
@@ -60,11 +64,11 @@ const JobSection: React.FC = () => {
           {/* Job 2 */}
           <div className="job-card">
             <div className="job-image">
-                <Image
+              <Image
                 src={Job2}
                 alt="Marketing Intern/OJT"
                 className="job-img"
-                />
+              />
             </div>
             <div className="job-content">
               <h3 className="job-title">Marketing Intern/OJT</h3>
@@ -73,23 +77,36 @@ const JobSection: React.FC = () => {
                 managing social media, supporting product research, and developing campaigns. This role offers valuable hands-on experience 
                 within a fast-paced marketing team.
               </p>
-               <ul className="job-requirements">
-                    <li>Currently enrolled students of Marketing, Advertising, Entrepreneurshio or other business-related courses</li>
-                    <li>Knowledge of inventory management systems</li>
-                    <li>Can do basic video and photo editing</li>
-                    <li>Willing to report in our office in Sampaloc, Manila for the whole duration</li>
-                </ul>
+              <ul className="job-requirements">
+                <li>Currently enrolled students of Marketing, Advertising, Entrepreneurshio or other business-related courses</li>
+                <li>Knowledge of inventory management systems</li>
+                <li>Can do basic video and photo editing</li>
+                <li>Willing to report in our office in Sampaloc, Manila for the whole duration</li>
+              </ul>
               <button
                 className="job-apply-button btn-secondary"
-                onClick={() =>
-                  window.open("https://www.facebook.com/VisionEcomCorp", "_blank")
-                }
+                onClick={() => setOpened(true)}
               >
                 Apply Now
               </button>
             </div>
           </div>
         </div>
+
+        {/* Mantine Modal for Job 2 */}
+       <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        centered
+        size="auto"   // 👈 makes the modal follow form size
+        overlayProps={{
+          backgroundOpacity: 0.55,
+          blur: 3,
+        }}
+      >
+        <ApplyForm job="Marketing Intern/OJT" />
+      </Modal>
+
 
         {/* Job Benefits */}
         <div className="job-benefits">

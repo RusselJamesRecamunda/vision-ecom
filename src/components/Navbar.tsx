@@ -1,9 +1,25 @@
+import { useEffect, useState } from "react";
 import "../style.css"; // go up one level from components
 import logo from "../assets/images/Logo/Logo.jpg"; // correct image import
 
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar" id="navbar">
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`} id="navbar">
       <div className="nav-container">
         <div className="nav-logo">
           <img
