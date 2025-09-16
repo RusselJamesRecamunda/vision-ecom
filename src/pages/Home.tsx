@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import BusinessIntro from "../components/BusinessIntro";
 import Philosophy from "../components/Philosophy";
 import AboutUs from "../components/AboutUs";
+import Events from "../components/Events";
 import { useEffect } from "react";
 
 function Home() {
@@ -33,6 +34,7 @@ function Home() {
         <BusinessIntro />
         <Philosophy />
         <AboutUs />
+        <Events />
     </div>
   );
 }
