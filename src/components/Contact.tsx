@@ -1,18 +1,11 @@
 import React from "react";
-import {
-  IconMapPin,
-  IconPhone,
-  IconMail,
-  IconClock,
-  IconBrandFacebook,
-  IconBrandLinkedin,
-} from "@tabler/icons-react";
-import "../style.css"; // your Contact Section CSS is here
+import "../style.css"; 
+import { FaClock, FaEnvelope, FaFacebookF, FaLinkedinIn, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
 const ContactSection: React.FC = () => {
   const contactInfo = [
     {
-      icon: <IconMapPin size={32} color="#0F5078" />,
+      icon: <FaMapMarkerAlt size={25} color="#0c31aaff" />,
       title: "Address",
       text: (
         <>
@@ -25,17 +18,17 @@ const ContactSection: React.FC = () => {
       ),
     },
     {
-      icon: <IconPhone size={32} color="#0F5078" />,
+      icon: <FaPhone size={25} color="#0c31aaff" />,
       title: "Phone",
       text: "0935 809 8669",
     },
     {
-      icon: <IconMail size={32} color="#0F5078" />,
+      icon: <FaEnvelope size={25} color="#0c31aaff" />,
       title: "Email",
       text: "connect@visionecomcorp.com",
     },
     {
-      icon: <IconClock size={32} color="#0F5078" />,
+      icon: <FaClock size={25} color="#0c31aaff" />,
       title: "Business Hours",
       text: "Monday - Saturday: 8:00 AM - 5:00 PM",
     },
@@ -87,7 +80,7 @@ const ContactSection: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconBrandFacebook size={24} />
+              <FaFacebookF size={18}/>
             </a>
             <a
               href="https://www.linkedin.com/company/visionecommerce/posts/?feedView=all"
@@ -95,7 +88,7 @@ const ContactSection: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <IconBrandLinkedin size={24} />
+              <FaLinkedinIn size={18}/>
             </a>
           </div>
         </div>

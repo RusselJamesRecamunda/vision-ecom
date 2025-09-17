@@ -4,38 +4,53 @@ import logo from "../assets/images/Logo/Logo.jpg"; // correct image import
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("home"); // default active
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const links = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About Us" },
+    { id: "events", label: "Events" },
+    { id: "jobs", label: "Jobs" },
+    { id: "contact", label: "Contact" },
+  ];
+
   return (
-    <nav className={`navbar ${scrolled ? "scrolled" : ""}`} id="navbar">
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-container">
         <div className="nav-logo">
-          <img
-            src={logo}
-            alt="Vision E-commerce Corp. Logo"
-            className="logo-img"
-          />
+          <img src={logo} alt="Logo" className="logo-img" />
         </div>
-        <ul className="nav-menu" id="nav-menu">
-          <li className="nav-item"><a href="#home" className="nav-link">Home</a></li>
-          <li className="nav-item"><a href="#about" className="nav-link">About Us</a></li>
-          <li className="nav-item"><a href="#events" className="nav-link">Events</a></li>
-          <li className="nav-item"><a href="#jobs" className="nav-link">Jobs</a></li>
-          <li className="nav-item"><a href="#contact" className="nav-link">Contact</a></li>
+
+        <ul className={`nav-menu ${menuOpen ? "active" : ""}`}>
+          {links.map((link) => (
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                className={`nav-link ${activeLink === link.id ? "active" : ""}`}
+                onClick={() => {
+                  setActiveLink(link.id);
+                  setMenuOpen(false); // close mobile menu when clicked
+                }}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
-        <div className="nav-toggle" id="mobile-menu">
+
+        <div
+          className={`nav-toggle ${menuOpen ? "active" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
@@ -44,5 +59,6 @@ function Navbar() {
     </nav>
   );
 }
+
 
 export default Navbar;

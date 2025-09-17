@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import {
-  IconHeart,
-  IconCurrencyPeso,
-  IconTrophy,
-  IconCalendar,
-  IconUsers,
-  IconAward,
-} from "@tabler/icons-react";
+import React, { useState } from "react"; 
 import "../style.css";
 import Job1 from "../assets/images/Jobs/ma.png";
 import Job2 from "../assets/images/Jobs/ojt.png";
 import { Image, Modal } from "@mantine/core";
 import ApplyForm from "./ApplyForm"; // import form
 import '@mantine/core/styles.css';
+import { FaCalendarAlt, FaGraduationCap, FaHeart, FaTrophy, FaUsers } from "react-icons/fa";
+import { FaPesoSign } from "react-icons/fa6";
 
 const JobSection: React.FC = () => {
   const [opened, setOpened] = useState(false);
+  const [selectedJob, setSelectedJob] = useState<string>("");
+
+  const openModal = (jobTitle: string) => {
+    setSelectedJob(jobTitle);
+    setOpened(true);
+  };
 
   return (
     <section id="jobs" className="jobs-section">
@@ -30,11 +30,7 @@ const JobSection: React.FC = () => {
           {/* Job 1 */}
           <div className="job-card">
             <div className="job-image">
-              <Image
-                src={Job1}
-                alt="Marketing Assistant"
-                className="job-img"
-              />
+              <Image src={Job1} alt="Marketing Assistant" className="job-img" />
             </div>
             <div className="job-content">
               <h3 className="job-title">Marketing Assistant</h3>
@@ -52,9 +48,7 @@ const JobSection: React.FC = () => {
               </ul>
               <button
                 className="job-apply-button btn-secondary"
-                onClick={() =>
-                  window.open("https://www.facebook.com/VisionEcomCorp", "_blank")
-                }
+                onClick={() => openModal("Marketing Assistant")}
               >
                 Apply Now
               </button>
@@ -64,11 +58,7 @@ const JobSection: React.FC = () => {
           {/* Job 2 */}
           <div className="job-card">
             <div className="job-image">
-              <Image
-                src={Job2}
-                alt="Marketing Intern/OJT"
-                className="job-img"
-              />
+              <Image src={Job2} alt="Marketing Intern/OJT" className="job-img" />
             </div>
             <div className="job-content">
               <h3 className="job-title">Marketing Intern/OJT</h3>
@@ -85,7 +75,7 @@ const JobSection: React.FC = () => {
               </ul>
               <button
                 className="job-apply-button btn-secondary"
-                onClick={() => setOpened(true)}
+                onClick={() => openModal("Marketing Intern/OJT")}
               >
                 Apply Now
               </button>
@@ -93,47 +83,46 @@ const JobSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Mantine Modal for Job 2 */}
-       <Modal
-        opened={opened}
-        onClose={() => setOpened(false)}
-        centered
-        size="auto"   // 👈 makes the modal follow form size
-        overlayProps={{
-          backgroundOpacity: 0.55,
-          blur: 3,
-        }}
-      >
-        <ApplyForm job="Marketing Intern/OJT" />
-      </Modal>
-
+        {/* Mantine Modal for both jobs */}
+        <Modal
+          opened={opened}
+          onClose={() => setOpened(false)}
+          centered
+          size="auto"
+          overlayProps={{
+            backgroundOpacity: 0.55,
+            blur: 3,
+          }}
+        >
+          <ApplyForm job={selectedJob} />
+        </Modal>
 
         {/* Job Benefits */}
         <div className="job-benefits">
           <h3 className="benefits-title">Why Work With Us?</h3>
           <div className="benefits-grid">
             <div className="benefit-item">
-              <IconHeart color="#f97316" />
+              <FaHeart size={22} color="#f97316" />
               <span>HMO</span>
             </div>
             <div className="benefit-item">
-              <IconCurrencyPeso color="#f97316" />
+              <FaPesoSign size={22} color="#f97316" />
               <span>Competitive Salary Package</span>
             </div>
             <div className="benefit-item">
-              <IconTrophy color="#f97316" />
+              <FaTrophy size={22} color="#f97316" />
               <span>Incentives Performance Base</span>
             </div>
             <div className="benefit-item">
-              <IconCalendar color="#f97316" />
+              <FaCalendarAlt size={22} color="#f97316" />
               <span>Monthly Elevate Celebrate</span>
             </div>
             <div className="benefit-item">
-              <IconAward color="#f97316" />
+              <FaGraduationCap size={22} color="#f97316" />
               <span>Professional Development Programs</span>
             </div>
             <div className="benefit-item">
-              <IconUsers color="#f97316" />
+              <FaUsers size={22} color="#f97316" />
               <span>Team Building Activities</span>
             </div>
           </div>

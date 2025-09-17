@@ -8,27 +8,35 @@ import JobsSection from "../components/JobsSection";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { useEffect } from "react";
+import { IconArrowUp } from "@tabler/icons-react";
 
 function Home() {
-  useEffect(() => {
-    const btn = document.getElementById("backToTop");
-    const handleScroll = () => {
-      if (btn) {
-        btn.style.display = window.scrollY > 300 ? "block" : "none";
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
+ useEffect(() => {
+  const btn = document.getElementById("backToTop");
 
+  const handleScroll = () => {
     if (btn) {
-      btn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+      if (window.scrollY > 300) {
+        btn.classList.add("visible");
+      } else {
+        btn.classList.remove("visible");
+      }
     }
+  };
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  window.addEventListener("scroll", handleScroll);
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+
 
   return (
     <div>
@@ -41,10 +49,10 @@ function Home() {
       <JobsSection />
       <Contact />
       <Footer />
-
       {/* Back to Top Button */}
       <button id="backToTop" className="back-to-top">
         <i className="fas fa-arrow-up"></i>
+        <IconArrowUp size={30} strokeWidth={3}/>
       </button>
     </div>
   );

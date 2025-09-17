@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  IconBrandFacebook,
-  IconBrandLinkedin,
-  IconMapPin,
-  IconPhone,
-  IconMail,
-} from "@tabler/icons-react";
-import "../style.css"; // your footer CSS
+import "../style.css"; 
+import { FaEnvelope, FaFacebookF, FaLinkedinIn, FaMapMarkerAlt, FaPhone } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   return (
@@ -27,7 +21,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <IconBrandFacebook size={20} />
+                <FaFacebookF/>
               </a>
               <a
                 href="https://www.linkedin.com/company/visionecommerce/posts/?feedView=all"
@@ -35,7 +29,7 @@ const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <IconBrandLinkedin size={20} />
+                <FaLinkedinIn />
               </a>
             </div>
           </div>
@@ -89,14 +83,14 @@ const Footer: React.FC = () => {
             <h4 className="footer-subtitle">Contact Info</h4>
             <div className="footer-contact">
               <p>
-                <IconMapPin color="orange" size={40} /> 915 Josefina Street Barangay 512
+                <FaMapMarkerAlt color="orange" size={20} /> 915 Josefina Street Barangay 512
                 Sampaloc, Manila, Philippines
               </p>
               <p>
-                <IconPhone color="orange" size={20} /> 0935 809 8669
+                <FaPhone color="orange" size={20} /> 0935 809 8669
               </p>
               <p>
-                <IconMail color="orange" size={20} /> connect@visionecomcorp.com
+                <FaEnvelope color="orange" size={20} /> connect@visionecomcorp.com
               </p>
             </div>
           </div>
