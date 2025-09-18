@@ -41,7 +41,7 @@ export function AdminSidebar({ active, setActive, children }: AdminSidebarProps)
       <AppShell.Navbar
         p="sm"
         style={{
-          backgroundColor: "#228be6",
+          backgroundColor: "#1e3a8b",
           color: "white",
           transition: "width 0.2s",
           overflow: "hidden",
@@ -100,44 +100,92 @@ export function AdminSidebar({ active, setActive, children }: AdminSidebarProps)
         )}
 
         <ScrollArea className="flex-1">
+          {/* Dashboard */}
           <NavLink
             label={!collapsed ? "Dashboard" : undefined}
             leftSection={<IconHome2 size={20} />}
             active={active === "dashboard"}
             onClick={() => setActive("dashboard")}
-            style={{
-              color: "white",
-              borderRadius: rem(8),
-              marginBottom: rem(6),
-              justifyContent: collapsed ? "center" : "flex-start",
-            }}
+            styles={(theme) => ({
+              root: {
+                borderRadius: rem(8),
+                marginBottom: rem(6),
+                justifyContent: collapsed ? "center" : "flex-start",
+                color: active === "dashboard" ? "#f97316" : "#dbdbdbff",
+                "&:hover, &:focus": {
+                  backgroundColor: theme.white,
+                  color: "#f97316",
+                },
+                "&[data-active]": {
+                  backgroundColor: theme.white,
+                  color: "#f97316",
+                },
+              },
+              label: { fontWeight: "bold" },
+              leftSection: {
+                color: active === "dashboard" ? "#f97316" : theme.white,
+              },
+            })}
           />
+
+          {/* Events */}
           <NavLink
             label={!collapsed ? "Events" : undefined}
             leftSection={<IconCalendarEvent size={20} />}
             active={active === "events"}
             onClick={() => setActive("events")}
-            style={{
-              color: "white",
-              borderRadius: rem(8),
-              marginBottom: rem(6),
-              justifyContent: collapsed ? "center" : "flex-start",
-            }}
+            styles={(theme) => ({
+              root: {
+                borderRadius: rem(8),
+                marginBottom: rem(6),
+                justifyContent: collapsed ? "center" : "flex-start",
+                color: active === "events" ? "#f97316" : "#dbdbdbff",
+                "&:hover, &:focus": {
+                  backgroundColor: theme.white,
+                  color: "#f97316",
+                },
+                "&[data-active]": {
+                  backgroundColor: theme.white,
+                  color: "#f97316",
+                },
+              },
+              label: { fontWeight: "bold" },
+              leftSection: {
+                color: active === "events" ? "#f97316" : theme.white,
+              },
+            })}
           />
+
+          {/* Post Job */}
           <NavLink
             label={!collapsed ? "Post Job" : undefined}
             leftSection={<IconBriefcase size={20} />}
             active={active === "postjob"}
             onClick={() => setActive("postjob")}
-            style={{
-              color: "white",
-              borderRadius: rem(8),
-              marginBottom: rem(6),
-              justifyContent: collapsed ? "center" : "flex-start",
-            }}
+            styles={(theme) => ({
+              root: {
+                borderRadius: rem(8),
+                marginBottom: rem(6),
+                justifyContent: collapsed ? "center" : "flex-start",
+                color: active === "postjob" ? "#f97316" : "#dbdbdbff",
+                "&:hover, &:focus": {
+                  backgroundColor: theme.white,
+                  color: "#f97316",
+                },
+                "&[data-active]": {
+                  backgroundColor: theme.white,
+                  color: "#f97316",
+                },
+              },
+              label: { fontWeight: "bold" },
+              leftSection: {
+                color: active === "postjob" ? "#f97316" : theme.white,
+              },
+            })}
           />
         </ScrollArea>
 
+        {/* Logout */}
         <div
           style={{
             borderTop: "1px solid rgba(255,255,255,0.3)",
@@ -148,10 +196,23 @@ export function AdminSidebar({ active, setActive, children }: AdminSidebarProps)
           <NavLink
             label={!collapsed ? "Logout" : undefined}
             leftSection={<IconLogout size={20} />}
-            style={{
-              color: "white",
-              justifyContent: collapsed ? "center" : "flex-start",
-            }}
+            styles={(theme) => ({
+              root: {
+                borderRadius: rem(8),
+                justifyContent: collapsed ? "center" : "flex-start",
+                color: "#dbdbdbff",
+                "&:hover, &:focus": {
+                  backgroundColor: theme.white,
+                  color: "#f97316",
+                },
+                "&[data-active]": {
+                  backgroundColor: theme.white,
+                  color: "#f97416ee",
+                },
+              },
+              label: { fontWeight: "bold" },
+              leftSection: { color: theme.white },
+            })}
           />
         </div>
       </AppShell.Navbar>

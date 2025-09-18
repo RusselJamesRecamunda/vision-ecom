@@ -83,19 +83,28 @@ const JobSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Mantine Modal for both jobs */}
-        <Modal
-          opened={opened}
-          onClose={() => setOpened(false)}
-          centered
-          size="auto"
-          overlayProps={{
-            backgroundOpacity: 0.55,
-            blur: 3,
-          }}
-        >
-          <ApplyForm job={selectedJob} />
-        </Modal>
+        {/* Mantine Modal for jobs */}
+     <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        centered
+        size="auto"
+        overlayProps={{
+          backgroundOpacity: 0.55,
+          blur: 3,
+        }}
+        withCloseButton={false}
+        styles={{
+          content: {
+            backgroundColor: "transparent",
+            boxShadow: "none",
+          },
+          body: { padding: 0 },
+        }}
+      >
+        <ApplyForm job={selectedJob} onClose={() => setOpened(false)} />
+      </Modal>
+
 
         {/* Job Benefits */}
         <div className="job-benefits">
