@@ -11,6 +11,7 @@ import {
   FileInput,
   Stack,
 } from "@mantine/core";
+import { IconCheckbox, IconSquareX } from "@tabler/icons-react";
 import { useState } from "react";
 
 export function PostJobPage() {
@@ -163,7 +164,7 @@ export function PostJobPage() {
                     variant="light"
                     onClick={() => updateStatus(idx, "accepted")}
                   >
-                    Accept
+                    <IconCheckbox size={20}/>
                   </Button>
                   <Button
                     size="xs"
@@ -171,7 +172,7 @@ export function PostJobPage() {
                     variant="light"
                     onClick={() => updateStatus(idx, "rejected")}
                   >
-                    Reject
+                    <IconSquareX size={20}/>
                   </Button>
                 </Group>
               </Table.Td>

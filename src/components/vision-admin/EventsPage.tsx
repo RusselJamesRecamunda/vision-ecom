@@ -1,8 +1,19 @@
+import { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import { Title, Box, List, Text } from "@mantine/core";
+import {
+  Title,
+  Box,
+  List,
+  Text,
+  Button,
+  Modal,
+  TextInput,
+  FileInput,
+} from "@mantine/core";
+import { MonthPickerInput } from "@mantine/dates";
 
 export function EventsPage() {
   const events = [
@@ -10,11 +21,55 @@ export function EventsPage() {
     { title: "Event 2", date: "2025-09-25" },
   ];
 
+  const [opened, setOpened] = useState(false);
+  const [eventName, setEventName] = useState("");
+  const [eventDate, setEventDate] = useState<string | null>(null);
+  const [eventImage, setEventImage] = useState<File | null>(null);
+  
+
   return (
     <Box p="md">
       <Title order={2} mb="md">
         Events
       </Title>
+
+      {/* Add New Event Button */}
+      <Button mb="md" onClick={() => setOpened(true)}>
+        Add New Event
+      </Button>
+
+      {/* Modal for Adding Event */}
+      <Modal opened={opened} onClose={() => setOpened(false)} title="Add New Event">
+        <TextInput
+          label="Name of Event"
+          placeholder="Enter event name"
+          value={eventName}
+          onChange={(e) => setEventName(e.currentTarget.value)}
+          mb="md"
+        />
+
+        <MonthPickerInput
+          type="default"
+          label="Select Month and Year"
+          placeholder="Pick month and year"
+          value={eventDate}
+          onChange={setEventDate}
+          mb="md"
+        />
+
+
+        <FileInput
+          label="Upload Image"
+          placeholder="Choose event image"
+          value={eventImage}
+          onChange={setEventImage}
+        />
+
+        <Button fullWidth mt="md" onClick={() => setOpened(false)}>
+          Save Event
+        </Button>
+      </Modal>
+
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
