@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../style.css";
 import team1 from "../assets/images/Events/Team Building/team1.jpg";
-import team4 from "../assets/images/Events/Team Building/team4.JPG";
-import team3 from "../assets/images/Events/Team Building/team3.JPG";
+import team4 from "../assets/images/Events/Team Building/team4.jpg";
+import team3 from "../assets/images/Events/Team Building/team3.jpg";
 import team5 from "../assets/images/Events/Team Building/team5.png";
 
 import tree1 from "../assets/images/Events/Tree Planting/tree1.jpg";
